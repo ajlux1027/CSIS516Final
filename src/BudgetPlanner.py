@@ -58,6 +58,10 @@ class BudgetTracker:
         
         self.button_clear = tk.Button(root, text="Clear", command=self.clear_entries)
         self.button_clear.pack()
+
+        # Button for clearing the database
+        self.button_clear_db = tk.Button(root, text="Clear Database", command=self.clear_database)
+        self.button_clear_db.pack()
     
     def create_table(self):
         # Create transactions table if it does not exist
@@ -155,7 +159,21 @@ class BudgetTracker:
         
         for transaction in transactions:
             text.insert(tk.END, f"{transaction[1].capitalize()} - {self.format_currency(transaction[0])} - {transaction[2]} - {transaction[3]}\n")
-        
+    
+    def clear_database(self):
+        # Ask for user confirmation before clearing the database
+        confirm = messagebox.askyesno("Clear Database", "Are you sure you want to delete all transactions? This action cannot be undone.")
+        if confirm:
+            self.cursor.execute("DELETE FROM transactions")
+            self.conn.commit()
+            
+            # Reset values
+            self.income = 0
+            self.expenses = 0
+            self.update_display()
+            
+            messagebox.showinfo("Success", "All transactions have been deleted.")
+
 if __name__ == "__main__":
     # Create and run the main application window
     root = tk.Tk()
