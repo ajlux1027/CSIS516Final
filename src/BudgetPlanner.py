@@ -45,23 +45,30 @@ class BudgetTracker:
         self.entry_label = tk.Entry(root)
         self.entry_label.pack()
         self.entry_label.insert(0, "Enter description")
+               # Frame for income and expense buttons
+        button_frame1 = tk.Frame(root)
+        button_frame1.pack(pady=5)  # Add spacing between frames
         
-        # Buttons for adding income, expenses, viewing transactions, and clearing input
-        self.button_income = tk.Button(root, text="Add Income", command=self.add_income)
-        self.button_income.pack()
+        self.button_income = tk.Button(button_frame1, text="Add Income", command=self.add_income, width=15)
+        self.button_income.grid(row=0, column=0, padx=5)  # Add padding between buttons
         
-        self.button_expense = tk.Button(root, text="Add Expense", command=self.add_expense)
-        self.button_expense.pack()
+        self.button_expense = tk.Button(button_frame1, text="Add Expense", command=self.add_expense, width=15)
+        self.button_expense.grid(row=0, column=1, padx=5)
         
-        self.button_view = tk.Button(root, text="View Transactions", command=self.view_transactions)
-        self.button_view.pack()
+        # View Transactions Button
+        self.button_view = tk.Button(root, text="View Transactions", command=self.view_transactions, width=32)
+        self.button_view.pack(pady=5)
         
-        self.button_clear = tk.Button(root, text="Clear", command=self.clear_entries)
-        self.button_clear.pack()
+        # Frame for Clear and Clear Database buttons
+        button_frame2 = tk.Frame(root)
+        button_frame2.pack(pady=5)
+        
+        self.button_clear = tk.Button(button_frame2, text="Clear", command=self.clear_entries, width=15)
+        self.button_clear.grid(row=0, column=0, padx=5)
+        
+        self.button_clear_db = tk.Button(button_frame2, text="Clear Database", command=self.clear_database, width=15)
+        self.button_clear_db.grid(row=0, column=1, padx=5)
 
-        # Button for clearing the database
-        self.button_clear_db = tk.Button(root, text="Clear Database", command=self.clear_database)
-        self.button_clear_db.pack()
     
     def create_table(self):
         # Create transactions table if it does not exist
