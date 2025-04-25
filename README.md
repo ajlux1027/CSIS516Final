@@ -55,5 +55,5 @@ The Personal Budget Tracker is a digital tool designed to help individuals effec
 A folder named `screenshots` contains images that show milestone progress throughout development.
 
 ## Demo Video
-Watch a short demo of the app in action: [YouTube Video](https://www.youtube.com/watch?v=your-video-id)
+Watch a short demo of the app in action: [YouTube Video]([https://www.youtube.com/watch?v=your-video-id](https://youtu.be/6wUfTUazoyE))
 
